@@ -8,7 +8,7 @@ def error_message_details(error, error_details: sys):
     file_name = exc_tb.tb_frame.f_code.co_filename
     line_number = exc_tb.tb_lineno
     error_message = str(error)
-    error_message = f"Error occurred in script name [{0}] line number [{1}] error message [{2}]".format(
+    error_message = "Error occurred in script name [{0}] line number [{1}] error message [{2}]".format(
         file_name, line_number, error_message
     )
     return error_message
@@ -27,12 +27,3 @@ class CustomException(Exception):
         """Return the string representation of the custom exception."""
         return self.error_message
 
-
-if __name__ == "__main__":
-    # Example usage of the CustomException class
-    try:
-        a = 1 / 0
-    except Exception as e:
-        logging.info("Divide by zero.")
-        raise CustomException(e, sys)
-    # This will raise a CustomException with the error message and details.
